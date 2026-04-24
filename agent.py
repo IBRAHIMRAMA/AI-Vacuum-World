@@ -1,6 +1,5 @@
 import random
 
-# 1. الوكيل البسيط (الذي يعتمد على رد الفعل اللحظي فقط)
 class SimpleReflexAgent:
     def __init__(self, environment):
         self.env = environment
@@ -9,7 +8,6 @@ class SimpleReflexAgent:
         self.steps = 0
 
     def move_randomly(self):
-        # يتحرك عشوائياً في الاتجاهات الأربعة
         directions = ['Up', 'Down', 'Left', 'Right']
         move = random.choice(directions)
         
@@ -22,7 +20,6 @@ class SimpleReflexAgent:
         return True
 
     def step(self):
-        # القاعدة: لو المربع الحالي متسخ نظف، غير كدة اتحرك عشوائي
         if self.env.grid[self.x][self.y] == "Dirty":
             print(f"🧹 (Reflex) Cleaning cell ({self.x}, {self.y})")
             self.env.grid[self.x][self.y] = "Clean"
@@ -31,7 +28,6 @@ class SimpleReflexAgent:
             return self.move_randomly()
 
 
-# 2. الوكيل الذكي (الذي يعتمد على الذاكرة والنموذج الداخلي)
 class ModelBasedAgent:
     def __init__(self, environment):
         self.env = environment
